@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Lotus Ascend</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="toast-container"></div>
+
+    <!-- === LOGO CONTAINER === -->
+    <div class="logo-container">
+        <img src="assets/images/LotusAscend_Logo.svg" alt="Lotus Ascend Logo">
+    </div>
+    <!-- ======================= -->
+
+    <div class="container auth-container">
+        <div class="auth-card">
+            <div class="card-header">
+                <h1 id="form-title">Join Now!!</h1>
+                <p id="form-subtitle">Register to start earning rewards.</p>
+            </div>
+            <form id="auth-form">
+                <div class="form-group" id="username-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Choose a username" required>
+                </div>
+                <div class="form-group" id="mobile-group">
+                    <label for="mobile">Mobile Number</label>
+                    <input type="tel" id="mobile" name="mobile" placeholder="Enter your 10-digit number" required>
+                </div>
+                <div class="form-group hidden" id="otp-group">
+                    <label for="otp">OTP</label>
+                    <input type="text" id="otp" name="otp" placeholder="Enter the 4-digit OTP">
+                </div>
+                <button type="submit" id="submit-btn">Register</button>
+            </form>
+            <div id="message-area" class="message hidden"></div>
+        </div>
+        <p class="footer-text">Your journey to rewards begins here.</p>
+    </div>
+
+    <script src="assets/js/main.js" type="module"></script>
+</body>
+</html>

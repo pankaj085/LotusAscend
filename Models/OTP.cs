@@ -11,7 +11,7 @@ public class OTP
     public int MemberId { get; set; }
 
     [Required]
-    [StringLength(6)]
+    [StringLength(4)]
     public required string Code { get; set; }
     public DateTime Expiry { get; set; }
 

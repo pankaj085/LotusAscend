@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Dashboard - Lotus Ascend</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="toast-container"></div>
+
+    <!-- === LOGO CONTAINER === -->
+    <div class="logo-container">
+        <img src="assets/images/LotusAscend_Logo.svg" alt="Lotus Ascend Logo">
+    </div>
+    <!-- ======================= -->
+
+    <div class="container dashboard-container">
+        <header class="dashboard-header">
+            <button id="logout-btn" class="secondary-btn">Logout</button>
+        </header>
+
+        <div class="card profile-card">
+            <h3 id="welcome-message">Welcome, Member!</h3>
+            <div class="points-display">
+                <span id="points-balance">0</span>
+                <p>Points</p>
+            </div>
+        </div>
+
+        <div class="actions-grid">
+            <button id="add-points-btn" class="action-btn" data-modal-target="#add-points-modal">Add Points</button>
+            <button id="redeem-coupon-btn" class="action-btn" data-modal-target="#redeem-coupon-modal">Redeem Coupon</button>
+        </div>
+
+        <div id="message-area" class="message hidden"></div>
+    </div>
+
+    <!-- Modals -->
+    <div id="add-points-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Add Points</h2>
+            <p>Enter the total purchase amount to earn points (10 points per ₹100).</p>
+            <form id="add-points-form">
+                <div class="form-group">
+                    <label for="purchase-amount">Purchase Amount (₹)</label>
+                    <input type="number" id="purchase-amount" min="1" placeholder="e.g., 500" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="redeem-coupon-modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2>Redeem Coupon</h2>
+            <p>Select the number of points you want to redeem.</p>
+            <form id="redeem-coupon-form">
+                <div class="form-group">
+                    <label for="points-to-redeem">Points to Redeem</label>
+                    <select id="points-to-redeem" required>
+                        <option value="">--Select Points--</option>
+                        <option value="250">250 Points (₹25 Coupon)</option>
+                        <option value="500">500 Points (₹50 Coupon)</option>
+                        <option value="1000">1000 Points (₹100 Coupon)</option>
+                        <option value="1500">1500 Points (₹150 Coupon)</option>
+                        <option value="2500">2500 Points (₹250 Coupon)</option>
+                        <option value="5000">5000 Points (₹500 Coupon)</option>
+                        <option value="10000">10000 Points (₹1000 Coupon)</option>
+                    </select>
+                </div>
+                <button type="submit" id="confirm-redeem-btn">Redeem</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js" type="module"></script>
+</body>
+</html>
