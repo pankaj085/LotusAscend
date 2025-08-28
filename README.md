@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# LotusLedger - Product Inventory API
+# LotusAscend - Loyalty Program API
 
 <div align="center">
 
