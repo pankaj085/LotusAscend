@@ -1,0 +1,6 @@
+@LotusAscend_HostAddress = http://localhost:5245
+
+GET {{LotusAscend_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
