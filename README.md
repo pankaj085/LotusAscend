@@ -194,4 +194,5 @@ This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LI
 ## Author
 
 Pankaj Kushwaha - [GitHub](https://github.com/pankaj085 "Follow me on GitHub") | [LinkedIn](https://www.linkedin.com/in/py--dev/ "Follow me on LinkedIn")
+
 -----
