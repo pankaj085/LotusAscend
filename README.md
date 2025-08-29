@@ -161,4 +161,23 @@ The API will be available at `http://localhost:5245/` (or a similar port).
   - **API Base URL:** `http://localhost:5245/`
   - **Swagger UI:** `http://localhost:5245/swagger/index.html`
 
+### 6\. Frontend Setup
+
+Frontend is a static site (HTML + CSS & Vanilla JS) consuming backend APIs.
+
+- **Install dotnet-serve (one-time)**
+
+```bash
+dotnet tool install --global dotnet-serve
+```
+
+- **Serve the Frontend**
+
+```bash
+cd Frontend
+dotnet serve -p 5500
+```
+
+- **Frontend runs at:** `http://localhost:5500`
+
 -----
