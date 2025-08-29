@@ -7,13 +7,19 @@ public record RegisterRequest(
     [Required]
     [RegularExpression("^[0-9]{10}$", ErrorMessage = "Mobile number must be exactly 10 digits.")] string MobileNumber,
     [Required] string Username);
+    
+// Data needed for an existing member to log in.
+public record LoginRequest(
+    [Required]
+    [RegularExpression("^[0-9]{10}$", ErrorMessage = "Mobile number must be exactly 10 digits.")]
+    string MobileNumber);
 
 // Data needed to verify a member's OTP.
 public record VerifyRequest(
     [Required]
     [RegularExpression("^[0-9]{10}$", ErrorMessage = "Mobile number must be exactly 10 digits.")]
-    string MobileNumber, 
-    
+    string MobileNumber,
+
     [Required]
     [StringLength(4, MinimumLength = 4, ErrorMessage = "OTP must be exactly 4 digits.")]
     [RegularExpression("^[0-9]{4}$", ErrorMessage = "OTP must contain only digits.")]

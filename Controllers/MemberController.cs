@@ -32,6 +32,18 @@ public class MemberController : ControllerBase
     }
 
     /// <summary>
+    /// Initiates login for an existing member by sending an OTP.
+    /// </summary>
+    [HttpPost("login")]
+    [ProducesResponseType(typeof(object), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(object), StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> Login(LoginRequest request)
+    {
+        var result = await _memberService.LoginAsync(request);
+        return result.IsSuccess ? Ok(new { message = result.Data }) : BadRequest(new { error = result.ErrorMessage });
+    }
+
+    /// <summary>
     /// Verifies a member's registration using the provided OTP.
     /// </summary>
     /// <param name="request">The verification details containing the mobile number and OTP.</param>

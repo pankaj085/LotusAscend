@@ -8,13 +8,16 @@ namespace LotusAscend.Interfaces;
 /// </summary>
 public interface IMemberService
 {
+
+    Task<ServiceResult<string>> LoginAsync(LoginRequest request);
+    
     /// <summary>
     /// Registers a new member.
     /// </summary>
     /// <param name="request">The registration details.</param>
     /// <returns>A result indicating success or failure.</returns>
     Task<ServiceResult<string>> RegisterAsync(RegisterRequest request);
-    
+
     /// <summary>
     /// Verifies a member's account using an OTP.
     /// </summary>

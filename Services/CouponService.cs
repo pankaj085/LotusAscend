@@ -51,7 +51,7 @@ public class CouponService : ICouponService
 
         if (couponValue == 0)
         {
-            return new ServiceResult<CouponResponse>(null, false, "Invalid points amount. Can only redeem 250, 500, 1000, 1500, 2500, 5000 or 10000 points.");
+            return new ServiceResult<CouponResponse>(null, false, "Invalid points amount. Please redeem one of the allowed values.");
         }
 
         if (member.TotalPoints < request.PointsToRedeem)
@@ -65,18 +65,31 @@ public class CouponService : ICouponService
         {
             MemberId = member.Id,
             PointsRedeemed = request.PointsToRedeem,
-            CouponValue = couponValue
+            CouponValue = couponValue,
+            CouponCode = GenerateCouponCode() // <-- Generate and assign the code
         };
+
         _context.Coupons.Add(coupon);
         await _context.SaveChangesAsync();
-
+        
         var response = new CouponResponse(
-            $"Successfully redeemed a ₹{couponValue} coupon.",
-            coupon.PointsRedeemed,
-            coupon.CouponValue,
+            $"Successfully redeemed a ₹{couponValue} coupon!",
+            coupon.CouponCode,                                 
             member.TotalPoints
         );
 
         return new ServiceResult<CouponResponse>(response, true, null);
+    }
+    
+    /// <summary>
+    /// Generates a simple, random 8-character alphanumeric coupon code.
+    /// </summary>
+    /// <returns>A unique coupon code string.</returns>
+    private string GenerateCouponCode()
+    {
+        const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        var random = new Random();
+        return new string(Enumerable.Repeat(chars, 8)
+            .Select(s => s[random.Next(s.Length)]).ToArray());
     }
 }

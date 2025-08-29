@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace LotusAscend.Models;
 
 /// <summary>
@@ -9,6 +11,9 @@ public class Coupon
     public int MemberId { get; set; }
     public int PointsRedeemed { get; set; }
     public decimal CouponValue { get; set; }
+
+    [Required]
+    public required string CouponCode { get; set; }
     public DateTime RedemptionDate { get; set; } = DateTime.UtcNow;
 
     public Member? Member { get; set; }

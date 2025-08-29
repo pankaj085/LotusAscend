@@ -67,6 +67,39 @@ public class MemberService : IMemberService
     }
 
     /// <summary>
+    /// Initiates the login process for an existing member by sending an OTP.
+    /// </summary>
+    public async Task<ServiceResult<string>> LoginAsync(LoginRequest request)
+    {
+        var member = await _context.Members.FirstOrDefaultAsync(m => m.MobileNumber == request.MobileNumber);
+
+        if (member == null)
+        {
+            return new ServiceResult<string>(null, false, "This mobile number is not registered.");
+        }
+
+        // Remove any old OTP for this user to ensure a clean login attempt
+        var existingOtp = await _context.Otps.FirstOrDefaultAsync(o => o.MemberId == member.Id);
+        if (existingOtp != null)
+        {
+            _context.Otps.Remove(existingOtp);
+        }
+
+        // Generate a new OTP for the existing user
+        var otp = new OTP
+        {
+            MemberId = member.Id,
+            Code = "2708", // Your dummy OTP
+            Expiry = DateTime.UtcNow.AddMinutes(5)
+        };
+
+        _context.Otps.Add(otp);
+        await _context.SaveChangesAsync();
+
+        return new ServiceResult<string>("OTP sent successfully. Please verify to log in.", true, null);
+    }
+
+    /// <summary>
     /// Verifies a member's account with the provided OTP and issues a JWT token upon success.
     /// </summary>
     /// <param name="request">The verification request containing the mobile number and OTP.</param>
