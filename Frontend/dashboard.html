@@ -10,11 +10,14 @@
 <body>
     <div id="toast-container"></div>
     <div class="logo-container">
-        <img src="assets/images/LotusAscend_Logo.svg" alt="Lotus Ascend Logo">
+        <img src="assets/images/LotusAscend_Logo.svg" alt="LotusAscend Logo">
     </div>
 
+    <!-- === MAIN CONTAINER STARTS HERE === -->
     <div class="container dashboard-container">
+        <h1 class="dashbord">Dashboard</h1>
         <header class="dashboard-header">
+            <!-- This content was missing, let's put it back -->
             <button id="logout-btn" class="secondary-btn">Logout</button>
         </header>
 
@@ -31,15 +34,27 @@
             <button id="redeem-coupon-btn" class="action-btn" data-modal-target="#redeem-coupon-modal">Redeem Coupon</button>
         </div>
 
- 
         <div id="latest-coupon-container" class="latest-coupon-container hidden">
             <p>Your new coupon code is:</p>
             <span id="latest-coupon-code"></span>
         </div>
-        <!-- ========================= -->
-    </div>
 
- 
+        <!-- === HISTORY IS NOW INSIDE THE CONTAINER === -->
+        <div class="transaction-history">
+            <h3>Transaction History</h3>
+            <ul id="history-list">
+                <!-- History items will be dynamically inserted here -->
+            </ul>
+            <div id="pagination-controls" class="pagination-controls">
+                <button id="prev-page-btn" disabled>&laquo; Previous</button>
+                <span id="page-info"></span>
+                <button id="next-page-btn" disabled>Next &raquo;</button>
+            </div>
+        </div>
+    </div>
+    <!-- === MAIN CONTAINER ENDS HERE === -->
+
+    <!-- Modals (no changes here) -->
     <div id="add-points-modal" class="modal hidden">
         <div class="modal-content">
             <span class="close-btn">&times;</span>

@@ -107,6 +107,7 @@ h1, h2, h3 {
 h1 {
     font-size: 24px;
     margin-bottom: 4px;
+    text-align: center;
 }
 
 p {
@@ -190,10 +191,6 @@ button:disabled {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-}
-
-.dashboard-header h2 {
-    font-size: 22px;
 }
 
 .profile-card {
@@ -307,4 +304,95 @@ button:disabled {
     letter-spacing: 2px;
     margin-top: 8px;
     font-family: monospace;
+}
+
+.transaction-history {
+    margin-top: 32px;
+}
+
+.transaction-history h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--card-background);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+#history-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+#history-list li:last-child {
+    border-bottom: none;
+}
+
+.history-details p {
+    font-size: 14px;
+    color: var(--text-color);
+    font-weight: 500;
+    margin: 0;
+}
+
+.history-details span {
+    font-size: 12px;
+    color: var(--subtle-text);
+}
+
+.history-amount {
+    font-size: 16px;
+    font-weight: 600;
+    text-align: right;
+}
+
+.history-amount.earned {
+    color: #059669; /* Green for earned points */
+}
+
+.history-amount.redeemed {
+    color: #D97706; /* Amber for redeemed points */
+}
+.pagination-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+}
+
+.pagination-controls button {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 8px 12px;
+    width: auto;
+    font-size: 14px;
+}
+
+.pagination-controls button:hover:not(:disabled) {
+    background-color: #F3F4F6; /* A light gray */
+}
+
+.pagination-controls button:disabled {
+    color: var(--subtle-text);
+    background-color: transparent;
+    cursor: not-allowed;
+}
+
+#page-info {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--subtle-text);
 }
