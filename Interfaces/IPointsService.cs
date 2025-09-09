@@ -22,5 +22,12 @@ public interface IPointsService
     /// <returns>The current points information for the member.</returns>
     Task<ServiceResult<PointsResponse>> GetPointsAsync(string memberId);
 
+    /// <summary>
+    /// Retrieves the paginated transaction history for a member.
+    /// </summary>
+    /// <param name="memberId">The unique identifier for the member.</param>
+    /// <param name="pageNumber">The page number to retrieve (1-based indexing).</param>
+    /// <param name="pageSize">The number of transactions per page.</param>
+    /// <returns>A paged result containing the member's transaction history and pagination metadata.</returns>
     Task<ServiceResult<PagedResult<TransactionHistoryResponse>>> GetTransactionHistoryAsync(string memberId, int pageNumber, int pageSize);
 }

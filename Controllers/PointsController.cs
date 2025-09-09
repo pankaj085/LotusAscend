@@ -62,8 +62,19 @@ public class PointsController : ControllerBase
         return result.IsSuccess ? Ok(result.Data) : NotFound(new { error = result.ErrorMessage });
     }
 
-    // --- UPDATED ENDPOINT WITH PAGINATION PARAMETERS ---
+    /// <summary>
+    /// Retrieves the paginated transaction history for the authenticated member.
+    /// </summary>
+    /// <returns>A paged result containing the transaction history and pagination metadata.</returns>
+    /// <param name="page">The page number to retrieve (1-based indexing, defaults to 1).</param>
+    /// <param name="pageSize">The number of transactions per page (defaults to 10).</param>
+    /// <response code="200">Returns the paginated transaction history.</response>
+    /// <response code="400">If the pagination parameters are invalid.</response>
+    /// <response code="401">If the user is not authenticated.</response>
     [HttpGet("history")]
+    [ProducesResponseType(typeof(PagedResult<TransactionHistoryResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(object), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> GetHistory([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
     {
         var memberId = User.FindFirstValue(ClaimTypes.NameIdentifier);

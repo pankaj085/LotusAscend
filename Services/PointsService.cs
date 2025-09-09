@@ -77,7 +77,18 @@ public class PointsService : IPointsService
         return new ServiceResult<PointsResponse>(new PointsResponse(member.TotalPoints), true, null);
     }
 
-    // --- THIS METHOD IS REWRITTEN FOR PAGINATION ---
+    /// <summary>
+    /// Retrieves a paginated list of transaction history for a member, including both points earned and coupon redemptions.
+    /// </summary>
+    /// <param name="memberId">The ID of the member whose transaction history is being requested.</param>
+    /// <param name="pageNumber">The page number to retrieve (1-based indexing).</param>
+    /// <param name="pageSize">The number of transactions to include per page.</param>
+    /// <returns>
+    /// A ServiceResult containing:
+    /// - List of transactions for the requested page
+    /// - Pagination metadata (current page, page size, total items, total pages)
+    /// - Success/failure status and any error messages
+    /// </returns>
     public async Task<ServiceResult<PagedResult<TransactionHistoryResponse>>> GetTransactionHistoryAsync(string memberId, int pageNumber, int pageSize)
     {
         if (!int.TryParse(memberId, out var id))
