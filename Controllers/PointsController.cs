@@ -61,4 +61,15 @@ public class PointsController : ControllerBase
         var result = await _pointsService.GetPointsAsync(memberId);
         return result.IsSuccess ? Ok(result.Data) : NotFound(new { error = result.ErrorMessage });
     }
+
+    // --- UPDATED ENDPOINT WITH PAGINATION PARAMETERS ---
+    [HttpGet("history")]
+    public async Task<IActionResult> GetHistory([FromQuery] int page = 1, [FromQuery] int pageSize = 10)
+    {
+        var memberId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (memberId == null) return Unauthorized();
+
+        var result = await _pointsService.GetTransactionHistoryAsync(memberId, page, pageSize);
+        return result.IsSuccess ? Ok(result.Data) : BadRequest(new { error = result.ErrorMessage });
+    }
 }

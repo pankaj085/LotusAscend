@@ -180,4 +180,18 @@ dotnet serve -p 5500
 
 - **Frontend runs at:** `http://localhost:5500`
 
+## 🙌 Contributing
+
+Contributions are welcome\! If you have suggestions for improvements, please open an issue or submit a pull request.
+
+-----
+
+## License
+
+This project is licensed under the [MIT License](LICENSE) - see the [LICENSE](LICENSE) file for details.
+
+## Author
+
+Pankaj Kushwaha - [GitHub](https://github.com/pankaj085 "Follow me on GitHub") | [LinkedIn](https://www.linkedin.com/in/py--dev/ "Follow me on LinkedIn")
+
 -----

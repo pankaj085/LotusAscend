@@ -21,4 +21,6 @@ public interface IPointsService
     /// <param name="memberId">The unique identifier for the member.</param>
     /// <returns>The current points information for the member.</returns>
     Task<ServiceResult<PointsResponse>> GetPointsAsync(string memberId);
+
+    Task<ServiceResult<PagedResult<TransactionHistoryResponse>>> GetTransactionHistoryAsync(string memberId, int pageNumber, int pageSize);
 }
