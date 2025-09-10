@@ -21,9 +21,10 @@ It’s designed to handle **member registration, login, points management, and c
 ---
 
 ## ✨ Features
-- **Secure Authentication**: JWT-based authentication with mobile number + OTP verification.  
+- **Secure Authentication**: JWT-based authentication with mobile number + OTP verification (Dynamic Random 4 digit OTP).
 - **Points Management**: Earn points based on purchase amounts, check balances.  
-- **Coupon Redemption**: Redeem points for discount coupons with unique codes.  
+- **Coupon Redemption**: Redeem points for discount coupons with unique codes. 
+- **Transaction History**: Displays all point-related transactions, includes both Points Redemption and Points Addition records. 
 - **Clean Architecture**: Modular, layered backend promoting separation of concerns.  
 - **Responsive Frontend**: Lightweight SPA-style frontend with HTML, CSS, and Vanilla JS.  
 - **API Documentation**: Integrated Swagger UI for interactive testing.

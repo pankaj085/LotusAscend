@@ -14,5 +14,5 @@ public record MemberResponse(int Id, string Username, string MobileNumber, int T
 // Transaction History Resonse
 public record TransactionHistoryResponse(string Type, string Description, string Amount, DateTime Date);
 
-// A generic wrapper for paginated results that includes both the data and pagination metadata.
+// for paginated results that includes both the data and pagination metadata.
 public record PagedResult<T>(List<T> Items, int PageNumber, int PageSize, int TotalCount, int TotalPages);

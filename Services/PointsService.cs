@@ -99,22 +99,37 @@ public class PointsService : IPointsService
         // 1. Fetch points earned transactions
         var pointsHistory = await _context.PointTransactions
             .Where(pt => pt.MemberId == id)
-            .Select(pt => new TransactionHistoryResponse("Points Earned", $"Purchase of ₹{pt.PurchaseAmount:F2}", $"+{pt.PointsAdded} pts", pt.TransactionDate))
+            .Select(pt => new TransactionHistoryResponse(
+                "Points Earned",
+                $"Purchase of ₹{pt.PurchaseAmount:F2}",
+                $"+{pt.PointsAdded} pts",
+                pt.TransactionDate))
             .ToListAsync();
 
         // 2. Fetch coupon redemption transactions
         var couponHistory = await _context.Coupons
             .Where(c => c.MemberId == id)
-            .Select(c => new TransactionHistoryResponse("Coupon Redeemed", $"₹{c.CouponValue} Coupon", $"-{c.PointsRedeemed} pts", c.RedemptionDate))
+            .Select(c => new TransactionHistoryResponse(
+                "Coupon Redeemed",
+                $"₹{c.CouponValue} Coupon: {c.CouponCode}",
+                $"-{c.PointsRedeemed} pts",
+                c.RedemptionDate))
             .ToListAsync();
 
         // 3. Combine and sort the full history
-        var combinedHistory = pointsHistory.Concat(couponHistory).OrderByDescending(t => t.Date).ToList();
+        var combinedHistory = pointsHistory
+        .Concat(couponHistory)
+        .OrderByDescending(t => t.Date)
+        .ToList();
 
-        // 4. Apply pagination logic
+        // 4.  pagination logic
         var totalCount = combinedHistory.Count;
         var totalPages = (int)Math.Ceiling(totalCount / (double)pageSize);
-        var pagedItems = combinedHistory.Skip((pageNumber - 1) * pageSize).Take(pageSize).ToList();
+
+        var pagedItems = combinedHistory
+        .Skip((pageNumber - 1) * pageSize)
+        .Take(pageSize)
+        .ToList();
 
         var result = new PagedResult<TransactionHistoryResponse>(pagedItems, pageNumber, pageSize, totalCount, totalPages);
 

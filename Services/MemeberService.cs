@@ -51,17 +51,22 @@ public class MemberService : IMemberService
             Username = request.Username
         };
 
+        var num = new Random();
+        string randomotp = num.Next(1000, 9999).ToString();
+
         // For simplicity, using a fixed dummy OTP.
         var otp = new OTP  
         {
             Member = member,
-            Code = "2708", // date we got this assignment - 27th August(08)
+            Code = randomotp, // date we got this assignment - 27th August(08)
             Expiry = DateTime.UtcNow.AddMinutes(2)
         };
 
         _context.Members.Add(member);
         _context.Otps.Add(otp);
         await _context.SaveChangesAsync();
+
+        Console.WriteLine($"OTP for {request.MobileNumber}: {randomotp}");
 
         return new ServiceResult<string>("Registration successful. Please verify with OTP.", true, null);
     }
@@ -85,16 +90,21 @@ public class MemberService : IMemberService
             _context.Otps.Remove(existingOtp);
         }
 
+        var num = new Random();
+        string randomotp = num.Next(1000, 9999).ToString();
+
         // Generate a new OTP for the existing user
         var otp = new OTP
         {
             MemberId = member.Id,
-            Code = "2708", // Your dummy OTP
+            Code = randomotp, // Your dummy OTP
             Expiry = DateTime.UtcNow.AddMinutes(5)
         };
 
         _context.Otps.Add(otp);
         await _context.SaveChangesAsync();
+
+        Console.WriteLine($"OTP for {request.MobileNumber}: {randomotp}");
 
         return new ServiceResult<string>("OTP sent successfully. Please verify to log in.", true, null);
     }
