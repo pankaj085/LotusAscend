@@ -58,7 +58,7 @@ public class MemberService : IMemberService
         var otp = new OTP  
         {
             Member = member,
-            Code = randomotp, // date we got this assignment - 27th August(08)
+            Code = randomotp, // date we got this assignment - 27th August(08)  "2708"
             Expiry = DateTime.UtcNow.AddMinutes(2)
         };
 

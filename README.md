@@ -38,7 +38,7 @@ It’s designed to handle **member registration, login, points management, and c
 ---
 ## 🧪 API Testing with Postman
 
-To make testing the LotusAscend API as easy as possible, **My complete Postman collection is available, Click the button below** to fork the collection to your own Postman workspace.
+To make testing the LotusAscend API as easy as possible, **My complete Postman collection and API Endpoint Documentation are available, Click the button below** to access API Docs and to fork the collection to your own Postman workspace.
 
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://www.postman.com/mrlotus/workspace/lotusascend/collection/43877835-77b66af7-f6da-4b1e-a040-f300518061ab?action=share&creator=43877835)
 
@@ -72,6 +72,7 @@ LotusAscend/
 ├── Contracts/                # DTOs for API request/response models
 ├── Controllers/              # API endpoints that handle HTTP requests
 ├── Interfaces/               # Service abstractions (contracts for business logic)
+├── MappingProfiles/          # An Automapper, that converts API Request/Response into DB Models and vice versa.
 ├── Middleware/               # Custom middleware (e.g., global exception handling)
 ├── Models/                   # EF Core entity models representing database tables
 ├── Services/                 # Concrete implementation of business logic
